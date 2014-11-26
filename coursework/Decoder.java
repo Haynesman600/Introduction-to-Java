@@ -4,39 +4,40 @@ class Decoder {
 
     public static void main(String[] args) {
         try {
-            // File reader connects to file, named file reader readF:
-            FileReader readF = new FileReader("Codes.txt");
-            // Provide buffering for the reader readF. Ok so this is
-            // the code to read a text file line by line:
-            BufferedReader buffF = new BufferedReader(readF);
-            String line;
-
-            // Reading file till the end:
-            while ((line = buffF.readLine()) != null) {
-
-                // Pass "line" to checkInput() and store result in "Test":
-                boolean Test= checkInput(line);
-
-                // Print out result of checkInput():
-                System.out.println(line + ": " + Test);
-            }
-
+            processFile("Codes.txt");
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    // The method to decide to read line or not:
-    public static boolean checkInput(String input) {
-        // So this is a method that accepts an argument in this case
-        // the line read from the text files and checks whether the
-        // line read from file is 7 chars long and only contains 1 and
-        // 0s. So i need to somehoe pass Sting "line" to method
-        // "checkInput":
-        if (input.length() == 7 && input.matches("[0-1]+")) {
-            return true;
-        } else {
-            return false;
+    // This method takes a string "filePath", and processes it:
+    private static void processFile(String filePath)
+            throws IOException {
+        // Open the file to read:
+        BufferedReader file = getFileReader(filePath);
+        // This variable will store our current line:
+        String line;
+
+        // Iterate over every line in a file:
+        while ((line = file.readLine()) != null) {
+            // Check if the line of the file is a Hamming code:
+            boolean isHammingCode = testIfHammingCode(line);
+
+            // Print out whether the input is a Hamming code:
+            System.out.println(line + ": " + isHammingCode);
         }
+    }
+
+    // A method which takes a string "filePath", and returns a
+    // buffered reader for that file:
+    private static BufferedReader getFileReader(String filePath)
+            throws IOException {
+        return new BufferedReader(new FileReader(filePath));
+    }
+
+    // A methid which takes a string and returns whether the string
+    // contains a Hamming code or not:
+    private static boolean testIfHammingCode(String input) {
+        return input.length() == 7 && input.matches("[0-1]+");
     }
 }
