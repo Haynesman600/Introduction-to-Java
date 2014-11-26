@@ -11,8 +11,12 @@ public static void main(String[] args){
 		
 				
 			while((line=buffF.readLine())!=null){ // reading file till the end
-			String Test= test.checkInput();
 				
+			// Pass "line" to checkInput() and store result in "Test":
+			boolean Test= checkInput(line);
+
+			// Print out result of checkInput():
+			System.out.println(line + ": " + Test);
 			}
 		
 				
