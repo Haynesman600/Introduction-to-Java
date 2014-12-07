@@ -1,0 +1,15 @@
+
+111111  Wrong Input
+111011  Wrong Input
+121111  Wrong Input
+10110110  Wrong Input
+1110000 Message: 1000
+1000011 Message: 0011
+1010011 Message: 0011
+a111111  Wrong Input
+0111100 Message: 1100
+0110100 Message: 0100
+10111  Wrong Input
+0100101 Message: 0101
+0100111 Message: 0011
+2a10101  Wrong Input
